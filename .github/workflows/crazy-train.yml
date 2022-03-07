@@ -1,0 +1,42 @@
+name: crazy-train
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  text:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby 2.7
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: "2.7"
+        bundler-cache: true
+    - name: Install dependencies
+      run: |
+        cd app/crazy_train
+        bundle install
+#    - name: Lint with flake8
+#      run: |
+#        cd app
+#        poetry run flake8 ./py_lyfe --max-complexity 10 --exclude ./py_lyfe/alembic
+#    - name: Run migrations for integration tests
+#      run: |
+#        cd app
+#        poetry run alembic -x db=test upgrade head
+    - name: Test with minitest
+      run: |
+        cd app/crazy_train
+        ./bin/rails test -v
+#    - name: Upload coverage to coveralls.io
+#      env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      run: |
+#        cd app
+#        poetry run coveralls --service=github
