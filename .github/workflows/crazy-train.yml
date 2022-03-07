@@ -41,4 +41,4 @@ jobs:
         path-to-lcov: ./app/crazy_train/coverage/lcov/crazy_train.lcov
         base-path: app/crazy_train
       env:
-        NODE_COVERALLS_DEBUGs: 1
+        NODE_COVERALLS_DEBUG: 1
