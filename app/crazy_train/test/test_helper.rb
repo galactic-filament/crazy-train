@@ -9,10 +9,7 @@ if ENV["CI"] == "true"
   SimpleCov::Formatter::LcovFormatter.config do |config|
     config.report_with_single_file = true
   end
-
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-    SimpleCov::Formatter::LcovFormatter
-  ])
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
 else
   SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 end
