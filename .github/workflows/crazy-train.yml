@@ -34,9 +34,8 @@ jobs:
       run: |
         cd app/crazy_train
         ./bin/rails test -v
-#    - name: Upload coverage to coveralls.io
-#      env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      run: |
-#        cd app
-#        poetry run coveralls --service=github
+    - name: Upload coverage to coveralls.io
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        path-to-lcov: app/crazy_train/coverage/lcov/crazy_train.lcov
