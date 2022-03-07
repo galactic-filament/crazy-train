@@ -1,6 +1,6 @@
 # crazy-train
 
-[![crazy-train](https://github.com/galactic-filament/crazy-train/actions/workflows/python-app.yml/badge.svg)](https://github.com/galactic-filament/crazy-train/actions/workflows/python-app.yml)
+[![crazy-train](https://github.com/galactic-filament/crazy-train/actions/workflows/crazy-train.yml/badge.svg)](https://github.com/galactic-filament/crazy-train/actions/workflows/crazy-train.yml)
 [![Coverage Status](https://coveralls.io/repos/github/galactic-filament/crazy-train/badge.svg?branch=master)](https://coveralls.io/github/galactic-filament/crazy-train?branch=master)
 
 ## Libraries
