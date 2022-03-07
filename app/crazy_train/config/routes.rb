@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  #
+  root "default#index"
+  get "/ping", to: "default#ping"
+  post "/reflection", to: "default#reflection"
 end
