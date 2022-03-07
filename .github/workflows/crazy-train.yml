@@ -39,3 +39,4 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: ${{ github.workspace }}/app/crazy_train/coverage/lcov/crazy_train.lcov
+        base-path: app/crazy_train
