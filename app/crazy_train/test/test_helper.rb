@@ -5,16 +5,20 @@ require "rails/test_help"
 require "simplecov"
 require "simplecov-lcov"
 
-if ENV["CI"] == "true"
-  SimpleCov::Formatter::LcovFormatter.config do |config|
-    config.report_with_single_file = true
-  end
-  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
-else
-  SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
-end
+SimpleCov.start "rails" do
+  puts ENV["CI"]
 
-SimpleCov.start("rails")
+  if ENV["CI"]
+    SimpleCov::Formatter::LcovFormatter.config do |c|
+      c.report_with_single_file = true
+      c.single_report_path = "coverage/lcov.info"
+    end
+
+    formatter SimpleCov::Formatter::LcovFormatter
+  else
+    formatter SimpleCov::Formatter::HTMLFormatter
+  end
+end
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

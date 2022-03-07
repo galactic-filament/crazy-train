@@ -38,7 +38,7 @@ jobs:
       uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ./app/crazy_train/coverage/lcov/crazy_train.lcov
+        path-to-lcov: ./app/crazy_train/coverage/lcov.info
         base-path: app/crazy_train
       env:
         NODE_COVERALLS_DEBUG: 1
