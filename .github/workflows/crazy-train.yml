@@ -34,6 +34,7 @@ jobs:
       run: |
         cd app/crazy_train
         CI=1 ./bin/rails test -v
+        cat ./app/crazy_train/coverage/lcov/crazy_train.lcov
     - name: Upload coverage to codecov.io
       uses: codecov/codecov-action@v2
       with:

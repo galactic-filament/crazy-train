@@ -1,7 +1,7 @@
 # crazy-train
 
 [![crazy-train](https://github.com/galactic-filament/crazy-train/actions/workflows/crazy-train.yml/badge.svg)](https://github.com/galactic-filament/crazy-train/actions/workflows/crazy-train.yml)
-[![Coverage Status](https://coveralls.io/repos/github/galactic-filament/crazy-train/badge.svg?branch=master)](https://coveralls.io/github/galactic-filament/crazy-train?branch=master)
+[![codecov](https://codecov.io/gh/galactic-filament/crazy-train/branch/main/graph/badge.svg?token=28OR37KWWY)](https://codecov.io/gh/galactic-filament/crazy-train)
 
 ## Libraries
 
