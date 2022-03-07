@@ -34,9 +34,9 @@ jobs:
       run: |
         cd app/crazy_train
         CI=1 ./bin/rails test -v
-  - name: Upload coverage to codecov.io
-    uses: codecov/codecov-action@v2
-    with:
-      files: ./app/crazy_train/coverage/lcov/crazy_train.lcov
-      fail_ci_if_error: true
-      verbose: true
+    - name: Upload coverage to codecov.io
+      uses: codecov/codecov-action@v2
+      with:
+        files: ./app/crazy_train/coverage/lcov/crazy_train.lcov
+        fail_ci_if_error: true
+        verbose: true
