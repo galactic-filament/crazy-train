@@ -3,18 +3,19 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 require "simplecov"
-require "simplecov-lcov"
 
 SimpleCov.start "rails" do
-  puts ENV["CI"]
-
   if ENV["CI"]
+    require "simplecov-lcov"
+    require "coveralls"
+
     SimpleCov::Formatter::LcovFormatter.config do |c|
       c.report_with_single_file = true
       c.single_report_path = "coverage/lcov.info"
     end
 
     formatter SimpleCov::Formatter::LcovFormatter
+    Coveralls.wear!
   else
     formatter SimpleCov::Formatter::HTMLFormatter
   end
