@@ -6,16 +6,24 @@ require "simplecov-lcov"
 require "simplecov-console"
 
 SimpleCov.start "rails" do
-  SimpleCov::Formatter::LcovFormatter.config do |c|
-    c.report_with_single_file = true
-  end
+  if ENV["CI"]
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-    SimpleCov::Formatter::Console,
-    SimpleCov::Formatter::LcovFormatter,
-    SimpleCov::Formatter::HTMLFormatter
-  ])
+    SimpleCov::Formatter::LcovFormatter.config do |c|
+      c.report_with_single_file = true
+    end
+
+    SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+      SimpleCov::Formatter::LcovFormatter,
+      SimpleCov::Formatter::Console
+    ])
+  else
+    SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+      SimpleCov::Formatter::HTMLFormatter,
+      SimpleCov::Formatter::Console
+    ])
+  end
 end
+Rails.application.eager_load!
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
