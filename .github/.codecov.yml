@@ -1,2 +1,2 @@
 fixes:
-  - './app/::app/crazy_train/app/'
+  - 'app/::app/crazy_train/app/'
