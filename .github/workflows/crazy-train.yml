@@ -33,10 +33,8 @@ jobs:
     - name: Test with minitest
       run: |
         cd app/crazy_train
-        CI=1 ./bin/rails test -v
-        ruby ./bin/fix-lcov-path.rb
+        ./bin/rails test -v
         cat ./coverage/lcov/crazy_train.lcov
-        echo yes
     - name: Upload coverage to codecov.io
       uses: codecov/codecov-action@v2
       with:

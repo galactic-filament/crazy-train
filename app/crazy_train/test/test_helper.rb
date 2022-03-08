@@ -1,21 +1,20 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
-
 require "simplecov"
+require "simplecov-lcov"
+require "simplecov-console"
 
 SimpleCov.start "rails" do
-  if ENV["CI"]
-    require "simplecov-lcov"
-
-    SimpleCov::Formatter::LcovFormatter.config do |c|
-      c.report_with_single_file = true
-    end
-
-    formatter SimpleCov::Formatter::LcovFormatter
-  else
-    formatter SimpleCov::Formatter::HTMLFormatter
+  SimpleCov::Formatter::LcovFormatter.config do |c|
+    c.report_with_single_file = true
   end
+
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::LcovFormatter,
+    SimpleCov::Formatter::HTMLFormatter
+  ])
 end
 
 class ActiveSupport::TestCase
