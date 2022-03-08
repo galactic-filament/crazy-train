@@ -36,6 +36,7 @@ jobs:
         CI=1 ./bin/rails test -v
         ruby ./bin/fix-lcov-path.rb
         cat ./coverage/lcov/crazy_train.lcov
+        echo yes
     - name: Upload coverage to codecov.io
       uses: codecov/codecov-action@v2
       with:
