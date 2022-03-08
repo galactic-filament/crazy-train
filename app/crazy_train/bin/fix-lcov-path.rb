@@ -7,5 +7,5 @@ unless File.exist? lcov_path
 end
 
 lcov_contents = File.read lcov_path
-replaced_lcov_contents = lcov_contents.gsub("SF:./app", "SF:./app/crazy_train/app")
+replaced_lcov_contents = lcov_contents.gsub("SF:./app", "SF:app/crazy_train/app")
 File.write lcov_path, replaced_lcov_contents
