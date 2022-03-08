@@ -5,16 +5,16 @@
 
 ## Libraries
 
-| Kind                  |     | Name                                                   |
-|-----------------------|:----|--------------------------------------------------------|
-| Web Framework         |     | [Ruby on Rails](https://rubyonrails.org/)              |
-| SQL ORM               |     | [ActiveRecord](https://rubygems.org/gems/activerecord) |
-| Logging               |     | stdlib                                                 |
-| Test Framework        |     | [Minitest](https://github.com/seattlerb/minitest)      |
-| Test Coverage         |     | [Simplecov](https://github.com/colszowka/simplecov)    |
-| Version Management    |     | [rbenv](https://github.com/rbenv/ruby-build)           |
-| Dependency Management |     | [bundler](https://bundler.io/)                         |
-| Linting/Formatting    |     | [Rubocop](https://rubocop.org/)                        |
+| Kind                  | Name                                                   |
+|-----------------------|--------------------------------------------------------|
+| Web Framework         | [Ruby on Rails](https://rubyonrails.org/)              |
+| SQL ORM               | [ActiveRecord](https://rubygems.org/gems/activerecord) |
+| Logging               | stdlib                                                 |
+| Test Framework        | [Minitest](https://github.com/seattlerb/minitest)      |
+| Test Coverage         | [Simplecov](https://github.com/colszowka/simplecov)    |
+| Version Management    | [rbenv](https://github.com/rbenv/ruby-build)           |
+| Dependency Management | [bundler](https://bundler.io/)                         |
+| Linting/Formatting    | [Rubocop](https://rubocop.org/)                        |
 
 ## Features Implemented
 
