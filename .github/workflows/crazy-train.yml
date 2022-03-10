@@ -22,10 +22,10 @@ jobs:
       run: |
         cd app/crazy_train
         bundle install
-#    - name: Lint with flake8
-#      run: |
-#        cd app
-#        poetry run flake8 ./py_lyfe --max-complexity 10 --exclude ./py_lyfe/alembic
+    - name: Lint with Rubocop
+      run: |
+        cd app
+        rubocop -l
 #    - name: Run migrations for integration tests
 #      run: |
 #        cd app
@@ -34,7 +34,6 @@ jobs:
       run: |
         cd app/crazy_train
         ./bin/rails test -v
-        cat ./coverage/lcov/crazy_train.lcov
     - name: Upload coverage to codecov.io
       uses: codecov/codecov-action@v2
       with:
