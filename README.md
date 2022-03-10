@@ -50,7 +50,7 @@
 - [ ] Environment validation script (env vars, database host and port are accessible)
 
 ### CI/CD Workflows
-- [x] Unit test coverage reporting
+- [x] Test coverage reporting
 - [x] Automated testing using GitHub Actions
 - [x] Automated coverage reporting using ~~Coveralls~~ Codecov (Coveralls was not working)
 - [ ] Postman in CI/CD steps
