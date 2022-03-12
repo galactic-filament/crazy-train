@@ -98,6 +98,9 @@ GEM
     mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.4.5)
+    net-http (0.2.0)
+      net-protocol
+      uri
     net-imap (0.2.3)
       digest
       net-protocol
@@ -190,6 +193,7 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
+    uri (0.11.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -201,6 +205,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  net-http
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.2)
   rubocop
