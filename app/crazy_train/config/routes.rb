@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root "default#index"
   get "/ping", to: "default#ping"
   post "/reflection", to: "default#reflection"
+  resources :posts
 end
