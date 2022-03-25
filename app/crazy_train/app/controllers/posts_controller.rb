@@ -13,4 +13,15 @@ class PostsController < ApplicationController
 
     render json: {post: post}
   end
+
+  def destroy
+    post = Post.find_by params[:id]
+    if post.nil?
+      raise ActiveRecord::RecordNotFound
+    end
+
+    post.destroy!
+
+    render json: {post: post}, status: :no_content
+  end
 end
