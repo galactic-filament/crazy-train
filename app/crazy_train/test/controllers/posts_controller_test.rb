@@ -103,4 +103,28 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert_not_equal err, nil
   end
+
+  test "should create a post" do
+    next_body = "Hello, world!"
+    body = {post: {body: next_body}}.to_json
+
+    post "/posts", params: body, headers: {'content-type': "application/json"}
+    assert_equal 201, @response.status
+
+    parsed_response = JSON.parse @response.body
+    post = Post.find_by parsed_response["post"]["id"].to_s
+    assert_equal next_body, post.body
+  end
+
+  test "should throw on creating disallowed field" do
+    err = nil
+    begin
+      body = {err: "err"}.to_json
+      post "/posts", params: body, headers: {'content-type': "application/json"}
+    rescue ActionController::ParameterMissing => e
+      err = e
+    end
+
+    assert_not_equal err, nil
+  end
 end

@@ -36,6 +36,12 @@ class PostsController < ApplicationController
     render json: {post: post}, status: :ok
   end
 
+  def create
+    post = Post.create posts_params
+
+    render json: {post: post}, status: :created
+  end
+
   private
 
   def posts_params
