@@ -60,4 +60,47 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     delete "/posts/#{post.id}"
     assert_equal 204, @response.status
   end
+
+  test "should update for existing post" do
+    post = Post.new(body: "Hello, world!")
+    post.save!
+
+    next_body = "Jello, world!"
+
+    body = {post: {body: next_body}}.to_json
+
+    patch "/posts/#{post.id}", params: body, headers: {'content-type': "application/json"}
+    assert_equal 200, @response.status
+
+    parsed_response = JSON.parse @response.body
+    post = Post.find_by parsed_response["post"]["id"].to_s
+    assert_equal next_body, post.body
+  end
+
+  test "should throw not-found for updating non-exist post" do
+    err = nil
+    begin
+      body = {post: {body: "Jello, world!"}}.to_json
+      patch "/posts/0", params: body, headers: {'content-type': "application/json"}
+    rescue ActiveRecord::RecordNotFound => e
+      err = e
+    end
+
+    assert_not_equal err, nil
+  end
+
+  test "should throw on updating disallowed field" do
+    err = nil
+    begin
+      post = Post.new(body: "Hello, world!")
+      post.save!
+
+      body = {err: "err"}.to_json
+      patch "/posts/#{post.id}", params: body, headers: {'content-type': "application/json"}
+    rescue ActionController::ParameterMissing => e
+      err = e
+    end
+
+    assert_not_equal err, nil
+  end
 end

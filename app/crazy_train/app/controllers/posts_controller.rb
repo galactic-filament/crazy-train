@@ -24,4 +24,21 @@ class PostsController < ApplicationController
 
     render json: {post: post}, status: :no_content
   end
+
+  def update
+    post = Post.find_by params[:id]
+    if post.nil?
+      raise ActiveRecord::RecordNotFound
+    end
+
+    post.update(posts_params)
+
+    render json: {post: post}, status: :ok
+  end
+
+  private
+
+  def posts_params
+    params.require(:post).permit(:body)
+  end
 end
