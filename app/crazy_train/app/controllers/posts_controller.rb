@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
     post.destroy!
 
-    render json: {post: post}, status: :no_content
+    render json: {}, status: :no_content
   end
 
   def update
@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 
     post.update(posts_params)
 
-    render json: {post: post}, status: :ok
+    render json: post, status: :ok
   end
 
   def create
