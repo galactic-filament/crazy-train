@@ -73,7 +73,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, @response.status
 
     parsed_response = JSON.parse @response.body
-    post = Post.find_by parsed_response["post"]["id"].to_s
+    post = Post.find_by parsed_response["id"].to_s
     assert_equal next_body, post.body
   end
 
