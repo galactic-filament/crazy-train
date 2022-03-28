@@ -11,7 +11,7 @@ class PostsController < ApplicationController
       raise ActiveRecord::RecordNotFound
     end
 
-    render json: {post: post}
+    render json: post
   end
 
   def destroy

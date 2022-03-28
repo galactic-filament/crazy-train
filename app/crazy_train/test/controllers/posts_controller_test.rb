@@ -39,7 +39,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 200, @response.status
 
     parsed_response = JSON.parse @response.body
-    assert_equal post.id, parsed_response["post"]["id"]
+    assert_equal post.id, parsed_response["id"]
   end
 
   test "should return not found for deleting non-exist post" do
