@@ -4,17 +4,42 @@ class UserController < ApplicationController
 
     user = User.create(username: user_params[:username], hashed_password: hashed_password)
 
-    access_token = JWT.encode({ data: user.id }, Rails.application.credentials[:secret_key_base], "HS256")
+    access_token = JWT.encode({data: user.id}, Rails.application.credentials[:secret_key_base], "HS256")
 
-    render json: { user: user.as_json, access_token: access_token }, status: :created
+    render json: {user: user.as_json, access_token: access_token}, status: :created
   end
 
   def get_user
-    access_token = request.headers["authorization"].split(" ")[1]
-    payload = JWT.decode(access_token, Rails.application.credentials[:secret_key_base], true)
-    puts payload[0]["data"]
+    auth_header = request.headers["authorization"]
+    if auth_header.nil?
+      render json: {}, status: :unauthorized
 
-    render plain: "Pong", status: :unauthorized
+      return
+    end
+
+    access_token = request.headers["authorization"].split(" ")[1]
+    if access_token.nil?
+      render json: {}, status: :unauthorized
+
+      return
+    end
+
+    payload = JWT.decode(access_token, Rails.application.credentials[:secret_key_base], true)
+    found_user_id = payload[0]["data"]
+    if found_user_id.nil?
+      render json: {}, status: :unauthorized
+
+      return
+    end
+
+    user = User.find_by id: found_user_id
+    if user.nil?
+      render json: {}, status: :unauthorized
+
+      return
+    end
+
+    render json: {user: user.as_json}, status: :ok
   end
 
   private
