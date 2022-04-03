@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  def create_user
+  def create
     hashed_password = BCrypt::Password.create(user_params[:password])
 
     user = User.create(username: user_params[:username], hashed_password: hashed_password)
@@ -9,7 +9,7 @@ class UserController < ApplicationController
     render json: {user: user.as_json, access_token: access_token}, status: :created
   end
 
-  def get_user
+  def show
     auth_header = request.headers["authorization"]
     if auth_header.nil?
       render json: {}, status: :unauthorized

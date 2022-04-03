@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   post "/reflection", to: "default#reflection"
   resources :posts
 
-  post "/users", to: "user#create_user"
-  get "/user", to: "user#get_user"
+  post "/users", to: "user#create"
+  get "/user", to: "user#show"
 end
