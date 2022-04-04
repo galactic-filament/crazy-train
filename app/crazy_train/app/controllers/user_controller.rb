@@ -1,4 +1,6 @@
 class UserController < ApplicationController
+  before_action :require_jwt_token, only: [:show]
+
   def create
     hashed_password = BCrypt::Password.create(user_params[:password])
 
@@ -10,36 +12,13 @@ class UserController < ApplicationController
   end
 
   def show
-    auth_header = request.headers["authorization"]
-    if auth_header.nil?
+    if @user.nil?
       render json: {}, status: :unauthorized
 
       return
     end
 
-    access_token = request.headers["authorization"].split(" ")[1]
-    if access_token.nil?
-      render json: {}, status: :unauthorized
-
-      return
-    end
-
-    payload = JWT.decode(access_token, CrazyTrain::Application.config.jwt_secret, true)
-    found_user_id = payload[0]["data"]
-    if found_user_id.nil?
-      render json: {}, status: :unauthorized
-
-      return
-    end
-
-    user = User.find_by id: found_user_id
-    if user.nil?
-      render json: {}, status: :unauthorized
-
-      return
-    end
-
-    render json: {user: user.as_json}, status: :ok
+    render json: {user: @user.as_json}, status: :ok
   end
 
   private
