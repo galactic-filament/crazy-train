@@ -19,3 +19,5 @@ Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+Style/Documentation:
+  Enabled: false

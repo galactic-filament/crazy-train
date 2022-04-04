@@ -4,7 +4,7 @@ class UserController < ApplicationController
 
     user = User.create(username: user_params[:username], hashed_password: hashed_password)
 
-    access_token = JWT.encode({data: user.id}, Rails.application.credentials[:secret_key_base], "HS256")
+    access_token = JWT.encode({data: user.id}, CrazyTrain::Application.config.jwt_secret, "HS256")
 
     render json: {user: user.as_json, access_token: access_token}, status: :created
   end
@@ -24,7 +24,7 @@ class UserController < ApplicationController
       return
     end
 
-    payload = JWT.decode(access_token, Rails.application.credentials[:secret_key_base], true)
+    payload = JWT.decode(access_token, CrazyTrain::Application.config.jwt_secret, true)
     found_user_id = payload[0]["data"]
     if found_user_id.nil?
       render json: {}, status: :unauthorized

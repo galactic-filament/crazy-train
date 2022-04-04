@@ -26,7 +26,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return unauthorized with invalid token (no user found)" do
-    access_token = JWT.encode({data: "-1"}, Rails.application.credentials[:secret_key_base], "HS256")
+    access_token = JWT.encode({data: "-1"}, CrazyTrain::Application.config.jwt_secret, "HS256")
 
     get "/user",
       headers: {'content-type': "application/json", authorization: "Bearer #{access_token}"}
@@ -40,7 +40,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should return unauthorized with invalid token (not jwt decodeable)" do
-    access_token = JWT.encode("-1", Rails.application.credentials[:secret_key_base], "HS256")
+    access_token = JWT.encode("-1", CrazyTrain::Application.config.jwt_secret, "HS256")
 
     get "/user",
       headers: {'content-type': "application/json", authorization: "Bearer #{access_token}"}
