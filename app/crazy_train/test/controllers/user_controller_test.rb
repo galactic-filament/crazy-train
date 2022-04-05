@@ -22,7 +22,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
 
     get "/user",
       headers: {'content-type': "application/json", authorization: "Bearer #{parsed_response["access_token"]}"}
-    assert_equal 200, @response.status
+    assert_equal 302, @response.status
   end
 
   test "should return unauthorized with invalid token (no user found)" do
@@ -43,6 +43,14 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     access_token = JWT.encode("-1", CrazyTrain::Application.config.jwt_secret, "HS256")
 
     get "/user",
+      headers: {'content-type': "application/json", authorization: "Bearer #{access_token}"}
+    assert_equal 401, @response.status
+  end
+
+  test "should return unauthorized for admin route" do
+    access_token = JWT.encode("-1", CrazyTrain::Application.config.jwt_secret, "HS256")
+
+    get "/user/admin",
       headers: {'content-type': "application/json", authorization: "Bearer #{access_token}"}
     assert_equal 401, @response.status
   end

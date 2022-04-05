@@ -18,7 +18,11 @@ class UserController < ApplicationController
       return
     end
 
-    render json: {user: @user.as_json}, status: :ok
+    render json: {user: @user.as_json}, status: :found
+  end
+
+  def admin
+    render json: {}, status: :unauthorized
   end
 
   private

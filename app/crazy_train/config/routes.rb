@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   post "/users", to: "user#create"
   get "/user", to: "user#show"
+  get "/user/admin", to: "user#admin"
 end
