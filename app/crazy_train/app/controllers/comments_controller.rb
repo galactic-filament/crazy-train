@@ -2,40 +2,56 @@ class CommentsController < ApplicationController
   before_action :require_jwt_token
 
   def index
-    posts = Post.all
+    if @user.nil?
+      render json: {}, status: :unauthorized
 
-    render json: {posts: posts}
+      return
+    end
+
+    render json: {comments: @user.comments}
   end
 
   def show
-    post = Post.find_by params[:id]
-    if post.nil?
-      raise ActiveRecord::RecordNotFound
+    if @user.nil?
+      render json: {}, status: :unauthorized
+
+      return
     end
 
-    render json: post
+    comment = Comment.find_by id: params[:id], user: @user
+    raise ActiveRecord::RecordNotFound if comment.nil?
+
+    render json: comment
   end
 
   def destroy
-    post = Post.find_by params[:id]
-    if post.nil?
-      raise ActiveRecord::RecordNotFound
+    if @user.nil?
+      render json: {}, status: :unauthorized
+
+      return
     end
 
-    post.destroy!
+    comment = Comment.find_by id: params[:id], user: @user
+    raise ActiveRecord::RecordNotFound if comment.nil?
+
+    comment.destroy!
 
     render json: {}, status: :no_content
   end
 
   def update
-    post = Post.find_by params[:id]
-    if post.nil?
-      raise ActiveRecord::RecordNotFound
+    if @user.nil?
+      render json: {}, status: :unauthorized
+
+      return
     end
 
-    post.update(posts_params)
+    comment = Comment.find_by id: params[:id], user: @user
+    raise ActiveRecord::RecordNotFound if comment.nil?
 
-    render json: post, status: :ok
+    comment.update(comments_params)
+
+    render json: comment, status: :ok
   end
 
   def create
