@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-  before_action :require_jwt_token, only: [:show]
+  before_action :require_jwt_token, except: [:create]
 
   def create
     hashed_password = BCrypt::Password.create(user_params[:password])
@@ -23,6 +23,16 @@ class UserController < ApplicationController
 
   def admin
     render json: {}, status: :unauthorized
+  end
+
+  def comments
+    if @user.nil?
+      render json: {}, status: :unauthorized
+
+      return
+    end
+
+    render json: {comments: @user.comments}, status: :ok
   end
 
   private

@@ -25,6 +25,20 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     assert_equal 302, @response.status
   end
 
+  test "should return comments" do
+    body = {user: {username: "username", password: "password"}}.to_json
+
+    post "/users", params: body, headers: {'content-type': "application/json"}
+    assert_equal 201, @response.status
+    parsed_response = JSON.parse @response.body
+
+    get "/user/comments",
+      headers: {'content-type': "application/json", authorization: "Bearer #{parsed_response["access_token"]}"}
+    assert_equal 200, @response.status
+    parsed_response = JSON.parse @response.body
+    assert_equal 0, parsed_response["comments"].size
+  end
+
   test "should return unauthorized with invalid token (no user found)" do
     access_token = JWT.encode({data: "-1"}, CrazyTrain::Application.config.jwt_secret, "HS256")
 
