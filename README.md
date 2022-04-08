@@ -20,28 +20,28 @@
 
 ### Functionality
 - [x] Hello world routes
-- [ ] CRUD routes for persisting posts
-- [ ] CRUD routes for user management
-- [ ] Form validation
+- [x] CRUD routes for persisting posts
+- [x] CRUD routes for user management
+- [x] Form validation
 
 ### Database
-- [ ] Database access in local environment
-- [ ] Database access in CI/CD environment
+- [x] Database access in local environment
+- [x] Database access in CI/CD environment
 - [ ] Database access in deployed (containerized) environment
-- [ ] Database migrations
-- [ ] Database model relationships
+- [x] Database migrations
+- [x] Database model relationships
 
 ### Monitoring
 - [ ] Request logging to /srv/app/log/app.log
 
 ### Developer Ergonomics
-- [ ] Unit tests with proper mocking
-- [ ] Integration tests against live (SQLite) db
-- [ ] Postman collection committed
+- [x] Unit tests with proper mocking
+- [x] Integration tests against live (SQLite) db
+- [x] Postman collection committed
 
 ### Security
-- [ ] Password encryption using bcrypt
-- [ ] Routes protected via Bearer token authentication
+- [x] Password encryption using bcrypt
+- [x] Routes protected via Bearer token authentication
 - [ ] Routes protected via ACLs
 - [ ] ~~Forms protected by CSRF~~ (Not necessary due to using JWT)
 

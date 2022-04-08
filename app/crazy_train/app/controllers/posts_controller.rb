@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    post = Post.find_by params[:id]
+    post = Post.find_by id: params[:id]
     if post.nil?
       raise ActiveRecord::RecordNotFound
     end
@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find_by params[:id]
+    post = Post.find_by id: params[:id]
     if post.nil?
       raise ActiveRecord::RecordNotFound
     end
@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find_by params[:id]
+    post = Post.find_by id: params[:id]
     if post.nil?
       raise ActiveRecord::RecordNotFound
     end
