@@ -21,3 +21,5 @@ Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
 Style/Documentation:
   Enabled: false
+Style/MethodCallWithArgsParentheses:
+  EnforcedStyle: omit_parentheses
