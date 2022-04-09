@@ -2,6 +2,9 @@ FROM ruby:2.7
 
 # alpine deps install
 
+
+ENV RAILS_ENV production
+
 # add app dir
 ENV APP_DIR /srv/app
 COPY ./app/crazy_train $APP_DIR
@@ -14,6 +17,5 @@ RUN bundle install
 
 EXPOSE 80
 ENV APP_PORT 80
-ENV RAILS_ENV production
 
 CMD ["./bin/run-app.sh"]
