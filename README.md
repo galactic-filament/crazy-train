@@ -46,7 +46,7 @@
 - [ ] ~~Forms protected by CSRF~~ (Not necessary due to using JWT)
 
 ### Orchestration & Deployment
-- [ ] Optimized Docker image
+- [x] Optimized Docker image
 - [ ] Environment validation script (env vars, database host and port are accessible)
 
 ### CI/CD Workflows
