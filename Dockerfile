@@ -1,7 +1,8 @@
-FROM ruby:2.7
+FROM ruby:2.7-alpine
 
 # alpine deps install
-
+RUN apk add --virtual native-deps \
+  build-base postgresql-dev sqlite-dev tzdata
 
 ENV RAILS_ENV production
 
@@ -14,6 +15,7 @@ WORKDIR $APP_DIR
 RUN bundle install
 
 # alpine deps cleanup
+#RUN apk del native-deps
 
 EXPOSE 80
 ENV APP_PORT 80

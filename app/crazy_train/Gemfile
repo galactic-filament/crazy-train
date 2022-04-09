@@ -6,9 +6,6 @@ ruby "2.7.5"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.2"
 
-# Use sqlite3 as the database for Active Record
-gem "sqlite3", "~> 1.4"
-
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -52,6 +49,9 @@ group :development, :test do
   gem "simplecov-console"
   gem "simplecov-html", "~> 0.12.3" # if you'd like classic html coverage reports
   gem "simplecov-lcov", "~> 0.8.0"
+
+  # Use sqlite3 as the database for Active Record
+  gem "sqlite3", "~> 1.4"
 end
 
 group :development do

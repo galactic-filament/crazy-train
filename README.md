@@ -27,7 +27,7 @@
 ### Database
 - [x] Database access in local environment
 - [x] Database access in CI/CD environment
-- [ ] Database access in deployed (containerized) environment
+- [x] Database access in deployed (containerized) environment
 - [x] Database migrations
 - [x] Database model relationships
 
@@ -54,4 +54,3 @@
 - [x] Automated testing using GitHub Actions
 - [x] Automated coverage reporting using ~~Coveralls~~ Codecov (Coveralls was not working)
 - [ ] Postman in CI/CD steps
-
