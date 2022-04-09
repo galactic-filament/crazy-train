@@ -14,5 +14,6 @@ RUN bundle install
 
 EXPOSE 80
 ENV APP_PORT 80
+ENV RAILS_ENV production
 
 CMD ["./bin/run-app.sh"]

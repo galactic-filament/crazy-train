@@ -1,3 +1,3 @@
 #! /bin/sh
 
-./bin/rails server -p "$APP_PORT" -e production
+./bin/rails server -p "$APP_PORT"
