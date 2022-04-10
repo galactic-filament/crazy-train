@@ -32,7 +32,7 @@
 - [x] Database model relationships
 
 ### Monitoring
-- [ ] Request logging to /srv/app/log/app.log
+- [x] Request logging to /tmp/app.log
 
 ### Developer Ergonomics
 - [x] Unit tests with proper mocking

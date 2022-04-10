@@ -85,4 +85,8 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.jwt_secret = Rails.application.credentials[:secret_key_base]
+
+  logger = ActiveSupport::Logger.new("#{ENV["APP_LOG_DIR"]}/app.log")
+  logger.formatter = config.log_formatter
+  config.logger = ActiveSupport::TaggedLogging.new(logger)
 end

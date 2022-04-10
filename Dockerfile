@@ -13,7 +13,7 @@ COPY ./app/crazy_train $APP_DIR
 WORKDIR $APP_DIR
 
 # bundle deps
-RUN bundle install
+RUN bundle install --jobs=8 --retry=3
 
 # alpine deps cleanup
 RUN apk del native-deps
