@@ -53,4 +53,5 @@
 - [x] Test coverage reporting
 - [x] Automated testing using GitHub Actions
 - [x] Automated coverage reporting using ~~Coveralls~~ Codecov (Coveralls was not working)
+- [ ] Docker build in CI/CD steps
 - [ ] Postman in CI/CD steps
