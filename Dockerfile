@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine as build-env
+FROM ruby:3.1-alpine as build-env
 
 # alpine deps install
 RUN apk add --virtual native-deps \
@@ -19,7 +19,7 @@ RUN bundle install --jobs=8 --retry=3
 RUN apk del native-deps
 
 
-FROM ruby:2.7-alpine as runtime-env
+FROM ruby:3.1-alpine as runtime-env
 
 # alpine deps install
 RUN apk add --virtual native-deps \
